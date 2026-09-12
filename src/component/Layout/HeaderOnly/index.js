@@ -1,6 +1,6 @@
 import Header from '~/component/Layout/components/Header';
 
-function LayoutDefault({ children }) {
+function HeaderOnly({ children }) {
     return (
         <div>
             <Header />
@@ -11,4 +11,4 @@ function LayoutDefault({ children }) {
     );
 }
 
-export default LayoutDefault;
+export default HeaderOnly;
