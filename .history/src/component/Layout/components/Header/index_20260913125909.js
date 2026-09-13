@@ -27,7 +27,6 @@ const Menu_Item = [
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback And Helps ',
-        to: './feedback',
     },
     {
         icon: <FontAwesomeIcon icon={faKeyboard} />,

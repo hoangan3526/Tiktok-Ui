@@ -80,7 +80,7 @@ function Header() {
                     <Button primary>Login</Button>
                     <Menu items={Menu_Item}>
                         <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                            <FontAwesomeIcon className={cx('menu-popper')} icon={faEllipsisVertical} />
                         </button>
                     </Menu>
                 </div>

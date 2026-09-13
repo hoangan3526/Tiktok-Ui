@@ -27,7 +27,6 @@ const Menu_Item = [
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback And Helps ',
-        to: './feedback',
     },
     {
         icon: <FontAwesomeIcon icon={faKeyboard} />,
@@ -78,7 +77,7 @@ function Header() {
                 <div className={cx('action')}>
                     <Button text>Upload</Button>
                     <Button primary>Login</Button>
-                    <Menu items={Menu_Item}>
+                    <Menu items={[]}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
