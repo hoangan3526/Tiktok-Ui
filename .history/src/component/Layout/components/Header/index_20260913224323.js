@@ -27,12 +27,10 @@ const Menu_Item = [
             title: 'Language',
             data: [
                 {
-                    type: 'language',
                     code: 'en',
                     title: 'English',
                 },
                 {
-                    type: 'language',
                     code: 'vi',
                     title: 'Tieng Viet',
                 },
@@ -49,10 +47,6 @@ const Menu_Item = [
         title: 'Keyboard shortcut',
     },
 ];
-const handelMenuChange = (menuItem) => {
-    // dung switch case de xu li  handel
-    console.log(menuItem);
-};
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -97,7 +91,7 @@ function Header() {
                 <div className={cx('action')}>
                     <Button text>Upload</Button>
                     <Button primary>Login</Button>
-                    <Menu items={Menu_Item} onChange={handelMenuChange}>
+                    <Menu items={Menu_Item}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>

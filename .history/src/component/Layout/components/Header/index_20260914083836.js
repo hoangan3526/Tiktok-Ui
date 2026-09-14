@@ -27,12 +27,10 @@ const Menu_Item = [
             title: 'Language',
             data: [
                 {
-                    type: 'language',
                     code: 'en',
                     title: 'English',
                 },
                 {
-                    type: 'language',
                     code: 'vi',
                     title: 'Tieng Viet',
                 },
@@ -50,7 +48,6 @@ const Menu_Item = [
     },
 ];
 const handelMenuChange = (menuItem) => {
-    // dung switch case de xu li  handel
     console.log(menuItem);
 };
 function Header() {

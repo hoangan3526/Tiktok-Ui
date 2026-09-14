@@ -16,7 +16,7 @@
     width: var(--default-layout-width);
     align-items: center;
     background-color: #fff;
-    padding: 0 var(--default-horizontal-spacer);
+    // padding: 0 var(--default-horizontal-spacer);
 }
 .logo {
     display: flex;
@@ -96,5 +96,4 @@
     margin-left: 28px;
     padding: 4px 8px;
     background-color: transparent;
-    cursor: pointer;
 }

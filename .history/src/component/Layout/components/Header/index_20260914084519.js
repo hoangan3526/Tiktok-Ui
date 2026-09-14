@@ -50,7 +50,6 @@ const Menu_Item = [
     },
 ];
 const handelMenuChange = (menuItem) => {
-    // dung switch case de xu li  handel
     console.log(menuItem);
 };
 function Header() {

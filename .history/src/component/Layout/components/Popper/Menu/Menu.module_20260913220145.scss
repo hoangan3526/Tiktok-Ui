@@ -22,17 +22,15 @@
 .header {
     height: 50px;
     position: relative;
-    margin-top: -8px;
 }
 .back-btn {
     width: 50px;
-    height: 100%;
     background-color: transparent;
     cursor: pointer;
+    height: 100%;
 }
 .header-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: 50;
+    left: 50;
 }
