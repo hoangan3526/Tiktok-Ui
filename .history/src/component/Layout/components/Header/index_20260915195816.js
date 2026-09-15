@@ -10,15 +10,11 @@ import {
     faCircleQuestion,
     faCircleXmark,
     faCloudUpload,
-    faCoins,
     faEarthAsia,
     faEllipsisVertical,
-    faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faSignOut,
     faSpinner,
-    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '../AccountItem';
@@ -59,27 +55,11 @@ const Menu_Item = [
 ];
 const userMenu = [
     {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile ',
-        to: './@ann',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get coins',
-        to: './coin',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Setting ',
-        to: './settings',
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback And Helps ',
+        to: './feedback',
     },
     ...Menu_Item,
-    {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
-        title: 'Log out',
-        to: './logout',
-        separate: true,
-    },
 ];
 const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {
@@ -147,7 +127,7 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={currentUser ? userMenu : Menu_Item} onChange={handleMenuChange}>
+                    <Menu items={userMenu ? userMenu : Menu_Item} onChange={handleMenuChange}>
                         {currentUser ? (
                             <img
                                 className={cx('user-avatar')}

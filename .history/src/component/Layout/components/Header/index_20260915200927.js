@@ -73,13 +73,13 @@ const userMenu = [
         title: 'Setting ',
         to: './settings',
     },
-    ...Menu_Item,
     {
         icon: <FontAwesomeIcon icon={faSignOut} />,
         title: 'Log out',
         to: './logout',
         separate: true,
     },
+    ...Menu_Item,
 ];
 const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {

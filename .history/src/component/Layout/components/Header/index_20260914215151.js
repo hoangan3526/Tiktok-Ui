@@ -10,23 +10,17 @@ import {
     faCircleQuestion,
     faCircleXmark,
     faCloudUpload,
-    faCoins,
     faEarthAsia,
     faEllipsisVertical,
-    faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faSignOut,
     faSpinner,
-    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '../AccountItem';
 import Button from '../Button';
 import Menu from '../Popper/Menu';
 const cx = classNames.bind(styles);
-const currentUser = true;
-
 const Menu_Item = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
@@ -57,30 +51,6 @@ const Menu_Item = [
         title: 'Keyboard shortcut',
     },
 ];
-const userMenu = [
-    {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile ',
-        to: './@ann',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get coins',
-        to: './coin',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Setting ',
-        to: './settings',
-    },
-    ...Menu_Item,
-    {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
-        title: 'Log out',
-        to: './logout',
-        separate: true,
-    },
-];
 const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {
         case 'language':
@@ -89,6 +59,7 @@ const handleMenuChange = (menuItem) => {
         default:
     }
 };
+const currentUser = true;
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -134,7 +105,7 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Tippy content="Upload video" placement="bottom">
                                 <button>
                                     <FontAwesomeIcon className={cx('action-btn')} icon={faCloudUpload} />
                                 </button>
@@ -147,7 +118,7 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={currentUser ? userMenu : Menu_Item} onChange={handleMenuChange}>
+                    <Menu items={Menu_Item} onChange={handleMenuChange}>
                         {currentUser ? (
                             <img
                                 className={cx('user-avatar')}

@@ -1,8 +1,7 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-import HeadlessTippy from '@tippyjs/react/headless';
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
+import Tippy from '@tippyjs/react/headless';
+
 import { Wrapper as PopperWrapper } from '../Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import images from '~/assets/image';
@@ -10,23 +9,18 @@ import {
     faCircleQuestion,
     faCircleXmark,
     faCloudUpload,
-    faCoins,
     faEarthAsia,
     faEllipsisVertical,
-    faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faSignOut,
+    faMessage,
     faSpinner,
-    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '../AccountItem';
 import Button from '../Button';
 import Menu from '../Popper/Menu';
 const cx = classNames.bind(styles);
-const currentUser = true;
-
 const Menu_Item = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
@@ -57,30 +51,6 @@ const Menu_Item = [
         title: 'Keyboard shortcut',
     },
 ];
-const userMenu = [
-    {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile ',
-        to: './@ann',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get coins',
-        to: './coin',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Setting ',
-        to: './settings',
-    },
-    ...Menu_Item,
-    {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
-        title: 'Log out',
-        to: './logout',
-        separate: true,
-    },
-];
 const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {
         case 'language':
@@ -89,6 +59,7 @@ const handleMenuChange = (menuItem) => {
         default:
     }
 };
+const currentUser = true;
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -103,7 +74,7 @@ function Header() {
                     <img src={images.logo} alt="  tiktok" />
                     <strong>TikTok</strong>
                 </div>
-                <HeadlessTippy
+                <Tippy
                     interactive={true}
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -129,16 +100,17 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </HeadlessTippy>
+                </Tippy>
 
-                <div className={cx('actions')}>
+                <div className={cx('action')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                                <button>
-                                    <FontAwesomeIcon className={cx('action-btn')} icon={faCloudUpload} />
-                                </button>
-                            </Tippy>
+                            <button>
+                                <FontAwesomeIcon icon={faCloudUpload} />
+                            </button>
+                            <button>
+                                <FontAwesomeIcon icon={faMessage} />
+                            </button>
                         </>
                     ) : (
                         <>
@@ -147,11 +119,11 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={currentUser ? userMenu : Menu_Item} onChange={handleMenuChange}>
+                    <Menu items={Menu_Item} onChange={handleMenuChange}>
                         {currentUser ? (
                             <img
                                 className={cx('user-avatar')}
-                                src="https://files.f8.edu.vn/f8-prod/avatars/69dc53854012f.png"
+                                src="https://images.unsplash.com/photo-1782303982218-e64cc9080c9c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="Le Hoang An"
                             />
                         ) : (
