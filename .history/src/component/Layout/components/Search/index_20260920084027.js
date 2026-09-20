@@ -78,7 +78,7 @@ function Search() {
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} onMouseDown={(e) => e.preventDefault()} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
         </HeadlessTippy>

@@ -38,9 +38,10 @@ function Search() {
     };
     const handleChange = (e) => {
         const searchValue = e.target.value;
-        if (!searchValue.startsWith(' ')) {
-            setSearchValue(searchValue);
+        if (!searchValue) {
+            return;
         }
+        setSearchValue(searchValue);
     };
     return (
         <HeadlessTippy
@@ -78,7 +79,7 @@ function Search() {
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} onMouseDown={(e) => e.preventDefault()} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
         </HeadlessTippy>
