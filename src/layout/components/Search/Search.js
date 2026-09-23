@@ -7,7 +7,7 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDebounce } from '~/hooks';
-import * as ServicesSearch from '~/api-services/ServicesSearch';
+import * as ServicesSearch from '~/services/ServicesSearch';
 const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -15,20 +15,30 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef();
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
         const fetchApi = async () => {
-            setLoading(true);
-            const result = await ServicesSearch.search(debounced);
-            setSearchResult(result);
+            // 1. Gọi API lấy dữ liệu (vẫn truyền debouncedValue bình thường)
+            const result = await ServicesSearch.search(debouncedValue);
+
+            // 2. Tự lọc kết quả bằng JavaScript
+            // Lưu ý: JSONPlaceholder sử dụng trường 'name' và 'username'
+            const filteredResult = result.filter(
+                (user) =>
+                    user.name.toLowerCase().includes(debouncedValue.toLowerCase()) ||
+                    user.username.toLowerCase().includes(debouncedValue.toLowerCase()),
+            );
+
+            // 3. Cập nhật State bằng danh sách ĐÃ LỌC
+            setSearchResult(filteredResult);
             setLoading(false);
         };
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
     const handelClear = () => {
         inputRef.current.focus();
         setSearchValue('');
@@ -53,6 +63,7 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h3 className={cx('search-title')}>Account</h3>
+
                             {searchResult.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
